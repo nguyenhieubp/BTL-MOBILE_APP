@@ -5,4 +5,5 @@ export declare class AttendanceController {
     constructor(attendanceService: AttendanceService);
     markAttendance(userId: number): Promise<AttendanceDto>;
     getAttendance(userId: number): Promise<AttendanceDto[]>;
+    getAttendanceExcel(): Promise<void>;
 }

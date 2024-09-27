@@ -25,6 +25,8 @@ let AttendanceController = class AttendanceController {
     async getAttendance(userId) {
         return this.attendanceService.getAttendance(userId);
     }
+    async getAttendanceExcel() {
+    }
 };
 exports.AttendanceController = AttendanceController;
 __decorate([
@@ -41,6 +43,12 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], AttendanceController.prototype, "getAttendance", null);
+__decorate([
+    (0, common_1.Get)('excel'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AttendanceController.prototype, "getAttendanceExcel", null);
 exports.AttendanceController = AttendanceController = __decorate([
     (0, common_1.Controller)('attendances'),
     __metadata("design:paramtypes", [attendance_service_1.AttendanceService])

@@ -15,4 +15,10 @@ export class AttendanceController {
   async getAttendance(@Param('userId') userId: number): Promise<AttendanceDto[]> {
     return this.attendanceService.getAttendance(userId);
   }
+
+
+  @Get('excel')
+  async getAttendanceExcel(){
+    
+  }
 }

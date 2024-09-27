@@ -15,6 +15,7 @@ const User_entity_1 = require("./User.entity");
 const Attendance_entity_1 = require("./Attendance.entity");
 const user_module_1 = require("./users/user.module");
 const attendance_module_1 = require("./Attendances/attendance.module");
+const excel_export_modules_1 = require("./ExcelExport/excel-export.modules");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -34,6 +35,7 @@ exports.AppModule = AppModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([User_entity_1.UserEntity, Attendance_entity_1.AttendanceEntity]),
             user_module_1.UserModule,
             attendance_module_1.AttendanceModule,
+            excel_export_modules_1.ExcelModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService]

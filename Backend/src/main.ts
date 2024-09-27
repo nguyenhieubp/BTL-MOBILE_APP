@@ -8,7 +8,5 @@ async function bootstrap() {
   app.enableCors();
   app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
   await app.listen(3000,'192.168.66.105');
-  //'192.168.66.101'
-  //192.168.54.252
 }
 bootstrap();

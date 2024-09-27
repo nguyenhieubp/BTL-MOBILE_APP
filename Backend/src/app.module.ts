@@ -6,6 +6,7 @@ import { UserEntity } from './User.entity';
 import { AttendanceEntity } from './Attendance.entity';
 import { UserModule } from './users/user.module';
 import { AttendanceModule } from './Attendances/attendance.module';
+import { ExcelModule } from './ExcelExport/excel-export.modules';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { AttendanceModule } from './Attendances/attendance.module';
     TypeOrmModule.forFeature([UserEntity, AttendanceEntity]),
     UserModule,
     AttendanceModule,
+    ExcelModule
   ],
   controllers: [AppController],
   providers: [AppService]
