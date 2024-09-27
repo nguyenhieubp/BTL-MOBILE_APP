@@ -23,12 +23,6 @@ const Header = () => {
     <View style={styles.container}>
       <View style={styles.user}>
         <Text style={styles.title}>Home</Text>
-        <Image
-          style={styles.logo}
-          source={{
-            uri: "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg",
-          }}
-        />
       </View>
         <Text style={styles.nameUser}>Xin chào, {user.user?.name}</Text>
     </View>

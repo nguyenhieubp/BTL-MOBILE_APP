@@ -43,10 +43,13 @@ const AttendanceScreen = () => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [isCheckingLocation, setIsCheckingLocation] = useState(true); // State để kiểm tra vị trí
   const [hasCheckedAttendance, setHasCheckedAttendance] = useState(false);
+  
+  // latitude:  21.04130091049479,
+  // longitude: 105.7425941891184,
 
   const targetCoords = {
-    latitude:  21.04130091049479,
-    longitude: 105.7425941891184,
+    latitude:  37.4216863,
+    longitude: -122.0842771,
   };
 
   useEffect(() => {
@@ -78,6 +81,8 @@ const AttendanceScreen = () => {
     getLocation();
     checkAttendanceStatus();
   }, []); // Sử dụng listAttendance từ Redux
+
+  
   
   
   useEffect(() => {
@@ -118,7 +123,7 @@ const AttendanceScreen = () => {
           await dispatch(postAttendance()).unwrap();
           Alert.alert(
             "Điểm danh thành công",
-            `Bạn đang ở trong phạm vi ${Math.round(distance)} mét.`
+            // `Bạn đang ở trong phạm vi ${Math.round(distance)} mét.`
           );
           dispatch(setIsSuccess(true));
         } catch (error) {

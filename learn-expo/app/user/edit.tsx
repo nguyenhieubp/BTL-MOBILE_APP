@@ -128,8 +128,8 @@ const EditUserProfile: React.FC = () => {
       <View style={styles.avatarContainer}>
         <Image
           source={{ uri: avatar ||  `${process.env.EXPO_PUBLIC_API_URL}/${user.image
-            .split("\\")
-            .join("/")}` }} // Sử dụng avatar từ state hoặc ảnh mặc định
+            ?.split("\\")
+            ?.join("/")}` }} // Sử dụng avatar từ state hoặc ảnh mặc định
           style={styles.avatar}
         />
         <View style={styles.avatarButtons}>
