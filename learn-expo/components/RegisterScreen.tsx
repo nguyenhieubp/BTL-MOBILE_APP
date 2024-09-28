@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Platform,
   Pressable,
+  Image,
 } from "react-native";
 import { registerUser } from "@/Redux/slices/userSlice"; // Thêm hành động đăng ký
 import { Colors } from "@/constants/Colors";
@@ -21,16 +22,29 @@ export default function RegisterScreen() {
   const dispatch = useAppDispatch();
 
   const handleRegister = async () => {
-    if (name.trim() && email.trim() && password.trim()) {
-      try {
-        await dispatch(registerUser({ name, email, password })).unwrap();
-        Alert.alert("Thành công", "Đăng ký thành công!");
-        router.replace("/login"); // Chuyển về trang đăng nhập sau khi đăng ký thành công
-      } catch (error) {
-        Alert.alert("Error", "Đăng ký thất bại.");
-      }
-    } else {
-      Alert.alert("Error", "Vui lòng nhập đầy đủ thông tin.");
+    // Kiểm tra thông tin hợp lệ
+    if (!name.trim() || !email.trim() || !password.trim()) {
+      Alert.alert("Lỗi", "Vui lòng nhập đầy đủ thông tin.");
+      return;
+    }
+    
+    if (!email.includes("@gmail.com")) {
+      Alert.alert("Lỗi", "Email phải có định dạng @gmail.com.");
+      return;
+    }
+    
+    if (password.length < 8) {
+      Alert.alert("Lỗi", "Mật khẩu phải có ít nhất 8 ký tự.");
+      return;
+    }
+
+    // Xử lý đăng ký khi thông tin hợp lệ
+    try {
+      await dispatch(registerUser({ name, email, password })).unwrap();
+      Alert.alert("Thành công", "Đăng ký thành công!");
+      router.replace("/login"); // Chuyển về trang đăng nhập sau khi đăng ký thành công
+    } catch (error) {
+      Alert.alert("Error", "Đăng ký thất bại.");
     }
   };
 
@@ -40,11 +54,17 @@ export default function RegisterScreen() {
       behavior="padding"
       keyboardVerticalOffset={Platform.OS === "ios" ? 10 : 0}
     >
+      <View style={{ alignItems: 'center' }}>
+        <Image
+          style={styles.logo}
+          source={{
+            uri: "https://static.vecteezy.com/system/resources/previews/024/568/140/non_2x/register-now-with-speech-bubble-and-ribbon-modern-design-template-for-icon-sign-logo-web-label-button-banner-registration-join-illustration-free-vector.jpg",
+          }}
+        />
+      </View>
       <View style={styles.inner}>
         <View style={{ marginBottom: 20 }}>
-          <Text
-            style={{ textAlign: "center", fontSize: 25, fontWeight: "bold" }}
-          >
+          <Text style={{ textAlign: "center", fontSize: 25, fontWeight: "bold" }}>
             Đăng ký tài khoản
           </Text>
         </View>
@@ -76,12 +96,12 @@ export default function RegisterScreen() {
         >
           <Pressable onPress={handleRegister}>
             <Text style={{ color: "white", textAlign: "center" }}>Đăng Ký</Text>
-          </Pressable> 
-        </Pressable>
-          <Pressable style={{marginTop: 20,display: 'flex',flexDirection: 'row'}} onPress={()=>router.back()}>
-            <Text>Bạn đã có tài khoản</Text>
-            <Text style={{color: 'red'}}> Đăng Nhập</Text>
           </Pressable>
+        </Pressable>
+        <Pressable style={{ marginTop: 20, display: 'flex', flexDirection: 'row' }} onPress={() => router.back()}>
+          <Text>Bạn đã có tài khoản</Text>
+          <Text style={{ color: 'red' }}> Đăng Nhập</Text>
+        </Pressable>
       </View>
     </KeyboardAvoidingView>
   );
@@ -95,7 +115,7 @@ const styles = StyleSheet.create({
   inner: {
     padding: 24,
     backgroundColor: "white",
-    margin: 16,
+    marginHorizontal: 16,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
@@ -109,5 +129,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
+  },
+  logo: {
+    width: 300,
+    height: 200,
   },
 });

@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native"; 
-import { router, useLocalSearchParams } from "expo-router";
-import React, { useEffect } from "react";
+import axios from "axios";
+import { router, useGlobalSearchParams, useLocalSearchParams } from "expo-router";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -11,38 +12,51 @@ import {
 
 var width = Dimensions.get("window").width; // full width
 
-interface Params {
+
+interface NewsItem {
   id: string;
+  title: string;
+  image: string;
+  desc: string;
 }
 
 const FixedPositionExample: React.FC = () => {
-  const { id } = useLocalSearchParams<any>(); // Lấy id từ params
   const navigation = useNavigation(); // Sử dụng hook useNavigation
+  const { item} = useLocalSearchParams(); // Lấy params từ router
+  const [news,setNews] = useState<NewsItem>();
 
   // Sử dụng useEffect để thay đổi tiêu đề khi component được render
   useEffect(() => {
-    if (id) {
-      navigation.setOptions({ title: `Chi tiết item ${id}` });
+    if (item) {
+      navigation.setOptions({ title: `Chi tiết item ${item}` });
     }
-  }, [id]);
+  }, [item]); // Thêm id vào dependency array
+
+  const fetItemNew = async () => {
+    const response = await axios.get(`${process.env.EXPO_PUBLIC_API_URL}/users/item/news/${item}`);
+    setNews(response.data);
+  };
+
+  useEffect(() => {
+    fetItemNew();
+  },[])
+
+
 
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.textContent}>Nội dung chính {id}</Text>
+        <Text style={styles.textContent}>{news?.title}</Text>
         <View>
           <Image
             style={styles.logo}
             source={{
-              uri: "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg",
+              uri: news?.image
             }}
           />
         </View>
         <Text style={{ marginTop: 10 }}>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquam
-          ipsum vitae fuga quo natus eaque harum deleniti nesciunt at a! Quas
-          placeat temporibus ad, obcaecati tenetur nisi modi voluptatibus
-          voluptatem?
+          {news?.desc}
         </Text>
       </View>
     </View>

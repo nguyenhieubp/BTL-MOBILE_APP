@@ -123,7 +123,7 @@ const EditUserProfile: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Edit User Profile</Text>
+      <Text style={styles.title}>Cập nhật thông tin người dùng</Text>
 
       <View style={styles.avatarContainer}>
         <Image
@@ -134,15 +134,15 @@ const EditUserProfile: React.FC = () => {
         />
         <View style={styles.avatarButtons}>
           <TouchableOpacity onPress={handleTakePhoto} style={styles.button}>
-            <Text style={styles.buttonText}>Take Photo</Text>
+            <Text style={styles.buttonText}>Chụp ảnh</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={handlePickImage} style={styles.button}>
-            <Text style={styles.buttonText}>Choose from Gallery</Text>
+            <Text style={styles.buttonText}>Bộ sưu tập</Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      <Text>Name:</Text>
+      <Text>Tên:</Text>
       <TextInput
         style={styles.input}
         value={name}
@@ -158,9 +158,10 @@ const EditUserProfile: React.FC = () => {
         placeholder="Enter your email"
       />
 
-      <Button title="Save" onPress={handleSave} disabled={isSaving} />
+      <Button title="Lưu" onPress={handleSave} disabled={isSaving} />
       {isSaving && <ActivityIndicator size="large" color="#007BFF" />}
-      <Button title="Cancel" onPress={() => router.back()} />
+      <View style={{marginTop: 10}}></View>
+      <Button  title="Hủy" onPress={() => router.back()} />
     </View>
   );
 };

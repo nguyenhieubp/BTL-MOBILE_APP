@@ -9,6 +9,7 @@ import {
   StyleSheet,
   Platform,
   Pressable,
+  Image,
 } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { router } from "expo-router";
@@ -63,12 +64,20 @@ export default function LoginScreen({ navigation }: any) {
       behavior="padding"
       keyboardVerticalOffset={Platform.OS === "ios" ? 10 : 0}
     >
+      <View style={{alignItems: 'center'}}>
+      <Image
+            style={styles.logo}
+            source={{
+              uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSni4W_ssx3U1KqS7a7wY_Q4NVU2hW3CP-1jA&s",
+            }}
+          />
+      </View>
       <View style={styles.inner}>
         <View style={{ marginBottom: 20 }}>
           <Text
             style={{ textAlign: "center", fontSize: 25, fontWeight: "bold" }}
           >
-            Phần mềm chấm công
+            Phần mềm chấm công 
           </Text>
         </View>
         <TextInput
@@ -115,13 +124,13 @@ const styles = StyleSheet.create({
   inner: {
     padding: 24,
     backgroundColor: "white",
-    margin: 16,
+    marginHorizontal: 16,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 8,
-    elevation: 5,
+
   },
   textInput: {
     height: 40,
@@ -129,5 +138,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
+  },
+  logo: {
+    width: 200,
+    height: 200,
   },
 });

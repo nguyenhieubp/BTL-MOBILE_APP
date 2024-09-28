@@ -7,4 +7,6 @@ export declare class UserController {
     login(email: string, password: string): Promise<UserEntity>;
     findById(id: number): Promise<UserEntity>;
     update(id: number, updateData: Partial<UserEntity>, file: Express.Multer.File): Promise<UserEntity>;
+    getAllNew(): Promise<import("../News.entity").NewsEntity[]>;
+    getItemNew(id: any): Promise<import("../News.entity").NewsEntity>;
 }

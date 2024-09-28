@@ -75,19 +75,19 @@ const UserProfile: React.FC = () => {
           style={styles.button}
           onPress={() => router.push(`/user/edit?userId=${user.user_id}`)}
         >
-          <Text style={styles.buttonText}>Update Information</Text>
+          <Text style={styles.buttonText}>Cập nhật thông tin người dung</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.logoutButton}
           onPress={handleLogout}
         >
-          <Text style={styles.logoutButtonText}>Logout</Text>
+          <Text style={styles.logoutButtonText}>Đăng xuất</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.body}>
-        <Text style={styles.bodyTitle}>User Information</Text>
-        <Text style={styles.label}>Name:</Text>
+        <Text style={styles.bodyTitle}>Thông tin người dùng</Text>
+        <Text style={styles.label}>Tên:</Text>
         <Text style={styles.value}>{user.name}</Text>
 
         <Text style={styles.label}>Email:</Text>

@@ -7,12 +7,15 @@ const width = Dimensions.get("window").width;
 interface NewsProps {
   title: string;
   id: string;
+  image: string;
+  desc: string;
 }
 
-const News: React.FC<NewsProps> = ({ id, title }) => {
+const News: React.FC<NewsProps> = ({ id, title,desc,image }) => {
   const handleChooseNew = (id: string) => {
-    router.push('/(news)/item', { id });  // Điều hướng tới màn hình item và truyền id
+    router.push(`/news/${id}`);
   };
+
 
   return (
     <TouchableOpacity onPress={() => handleChooseNew(id)}>
@@ -23,13 +26,12 @@ const News: React.FC<NewsProps> = ({ id, title }) => {
             <Image
               style={styles.logo}
               source={{
-                uri: "https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg?size=626&ext=jpg",
+                uri: image,
               }}
             />
             <View style={{ paddingHorizontal: 10, overflow: "hidden" }}>
               <Text style={{ marginHorizontal: 10 }}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-                illum soluta quia.
+                {desc}
               </Text>
             </View>
           </View>

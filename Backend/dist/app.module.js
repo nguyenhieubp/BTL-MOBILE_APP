@@ -16,6 +16,7 @@ const Attendance_entity_1 = require("./Attendance.entity");
 const user_module_1 = require("./users/user.module");
 const attendance_module_1 = require("./Attendances/attendance.module");
 const excel_export_modules_1 = require("./ExcelExport/excel-export.modules");
+const News_entity_1 = require("./News.entity");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -29,10 +30,10 @@ exports.AppModule = AppModule = __decorate([
                 username: 'root',
                 password: '12345678',
                 database: 'mobileappbtl',
-                entities: [User_entity_1.UserEntity, Attendance_entity_1.AttendanceEntity],
+                entities: [User_entity_1.UserEntity, Attendance_entity_1.AttendanceEntity, News_entity_1.NewsEntity],
                 synchronize: true,
             }),
-            typeorm_1.TypeOrmModule.forFeature([User_entity_1.UserEntity, Attendance_entity_1.AttendanceEntity]),
+            typeorm_1.TypeOrmModule.forFeature([User_entity_1.UserEntity, Attendance_entity_1.AttendanceEntity, News_entity_1.NewsEntity]),
             user_module_1.UserModule,
             attendance_module_1.AttendanceModule,
             excel_export_modules_1.ExcelModule

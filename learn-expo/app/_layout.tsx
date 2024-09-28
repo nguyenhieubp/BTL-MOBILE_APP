@@ -22,6 +22,5 @@ export default function RootLayout() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20, // Thêm padding 20 cho toàn bộ layout
   },
 });

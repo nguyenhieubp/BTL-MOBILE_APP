@@ -65,6 +65,7 @@ export class AttendanceService {
       const attendance = new AttendanceEntity();
       attendance.user = user;
       attendance.attended = false;
+      attendance.date = new Date();
 
       await this.attendanceRepository.save(attendance);
       return [this.mapToDto(attendance)];

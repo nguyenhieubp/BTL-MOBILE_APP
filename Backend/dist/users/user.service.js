@@ -18,9 +18,11 @@ const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const User_entity_1 = require("../User.entity");
 const bcrypt = require("bcrypt");
+const News_entity_1 = require("../News.entity");
 let UserService = class UserService {
-    constructor(userRepository) {
+    constructor(userRepository, newRepository) {
         this.userRepository = userRepository;
+        this.newRepository = newRepository;
     }
     async register(name, email, password) {
         const existingUser = await this.userRepository.findOneBy({ email });
@@ -55,11 +57,19 @@ let UserService = class UserService {
         }
         return this.userRepository.save(user);
     }
+    async getAllNews() {
+        return this.newRepository.find();
+    }
+    async getItemNew(id) {
+        return this.newRepository.findOneBy({ id: id });
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(User_entity_1.UserEntity)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __param(1, (0, typeorm_1.InjectRepository)(News_entity_1.NewsEntity)),
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        typeorm_2.Repository])
 ], UserService);
 //# sourceMappingURL=user.service.js.map

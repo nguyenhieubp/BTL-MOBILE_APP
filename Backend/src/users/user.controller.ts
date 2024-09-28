@@ -56,4 +56,14 @@ export class UserController {
 
     return this.userService.update(id, updateData);
   }
+
+  @Get('all/news')
+  async getAllNew(){
+    return this.userService.getAllNews();
+  }
+
+  @Get('item/news/:id')
+  async getItemNew(@Param('id') id ){
+    return this.userService.getItemNew(id);
+  }
 }

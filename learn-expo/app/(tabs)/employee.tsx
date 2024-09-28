@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/Redux/configs/hook";
 import { fetchAttendances, postAttendance, setIsSuccess } from "@/Redux/slices/attendanceSlice";
 import moment from "moment";
 import * as SecureStore from 'expo-secure-store';
+import { targetCoordsConfig} from '../../constants/targetCoords'
 
 const DISTANCE = 50;
 
@@ -44,13 +45,8 @@ const AttendanceScreen = () => {
   const [isCheckingLocation, setIsCheckingLocation] = useState(true); // State để kiểm tra vị trí
   const [hasCheckedAttendance, setHasCheckedAttendance] = useState(false);
   
-  // latitude:  21.04130091049479,
-  // longitude: 105.7425941891184,
 
-  const targetCoords = {
-    latitude:  37.4216863,
-    longitude: -122.0842771,
-  };
+  const targetCoords =  targetCoordsConfig;
 
   useEffect(() => {
     const getLocation = async () => {

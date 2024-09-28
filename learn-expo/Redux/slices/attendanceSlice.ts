@@ -65,6 +65,7 @@ const attendancesSlice = createSlice({
       })
       .addCase(fetchAttendances.fulfilled, (state, action: PayloadAction<Attendance[]>) => {
         state.attendances = action.payload;
+        console.log(action.payload);
         state.loading = false;
       })
       .addCase(fetchAttendances.rejected, (state, action) => {

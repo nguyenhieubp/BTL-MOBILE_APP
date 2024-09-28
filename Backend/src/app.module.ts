@@ -7,6 +7,7 @@ import { AttendanceEntity } from './Attendance.entity';
 import { UserModule } from './users/user.module';
 import { AttendanceModule } from './Attendances/attendance.module';
 import { ExcelModule } from './ExcelExport/excel-export.modules';
+import { NewsEntity } from './News.entity';
 
 @Module({
   imports: [
@@ -17,10 +18,10 @@ import { ExcelModule } from './ExcelExport/excel-export.modules';
       username: 'root',
       password: '12345678',
       database: 'mobileappbtl',
-      entities: [UserEntity,AttendanceEntity],
+      entities: [UserEntity,AttendanceEntity,NewsEntity],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([UserEntity, AttendanceEntity]),
+    TypeOrmModule.forFeature([UserEntity, AttendanceEntity,NewsEntity]),
     UserModule,
     AttendanceModule,
     ExcelModule

@@ -13,13 +13,14 @@ const User_entity_1 = require("../User.entity");
 const user_service_1 = require("./user.service");
 const user_controller_1 = require("./user.controller");
 const platform_express_1 = require("@nestjs/platform-express");
+const News_entity_1 = require("../News.entity");
 let UserModule = class UserModule {
 };
 exports.UserModule = UserModule;
 exports.UserModule = UserModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            typeorm_1.TypeOrmModule.forFeature([User_entity_1.UserEntity]),
+            typeorm_1.TypeOrmModule.forFeature([User_entity_1.UserEntity, News_entity_1.NewsEntity]),
             platform_express_1.MulterModule.register({
                 dest: './uploads',
             }),

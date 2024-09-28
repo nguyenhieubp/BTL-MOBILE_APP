@@ -37,6 +37,12 @@ let UserController = class UserController {
         }
         return this.userService.update(id, updateData);
     }
+    async getAllNew() {
+        return this.userService.getAllNews();
+    }
+    async getItemNew(id) {
+        return this.userService.getItemNew(id);
+    }
 };
 exports.UserController = UserController;
 __decorate([
@@ -82,6 +88,19 @@ __decorate([
     __metadata("design:paramtypes", [Number, Object, Object]),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "update", null);
+__decorate([
+    (0, common_1.Get)('all/news'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getAllNew", null);
+__decorate([
+    (0, common_1.Get)('item/news/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "getItemNew", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [user_service_1.UserService])
